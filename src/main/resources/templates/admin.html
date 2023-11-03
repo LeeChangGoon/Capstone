@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>임시 관리자 페이지</title>
+</head>
+<body>
+	
+	<form th:action="@{/logout}" method = "post">
+      <button type = "submit" onclick="location.href='/login'">로그아웃</button> 
+     </form>
+     <button type = "button" onclick="location.href='/user/home'">메인화면으로</button> 
+	<form th:action="@{/admin/usersetting}" method="post" th:object="${UserSetRequest}" >
+		<div class="form-group">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required />
+        </div>
+        <button type ="submit" name="action" value="Delete">사용자 삭제</button> 
+    	<button type ="submit" name="action" value="SetAdmin">관리자로 설정</button> 
+    	<button type ="submit" name="action" value="SetUser">사용자로 설정</button> 
+	</form>
+
+    <!--사용자 리스트 -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Name</th>
+                <th>전화번호</th>
+                <th>Role</th>
+            </tr>
+        </thead>
+
+
+    
+	<tbody th:each="member : ${members}">
+    	<tr>
+     	   <td th:text="${member.username}"></td> 
+    	    <td th:text="${member.name}"></td>  
+    	    <td th:text="${member.phoneNumber}"></td> 
+    	    <td th:text="${member.role}"></td> 
+   	 </tr>
+	</tbody>
+
+    </table>
+        <h4>충전소 리스트</h4>
+        	<form th:action="@{/admin/deletecharger}" action="post">
+		<div class="form-group">
+			<label for="id">충전소 No:</label>
+			<input type="text" id="id" name="id" required />
+		</div>
+			<button type ="submit">충전소 삭제</button>
+		</form>	
+    <table>
+	<!--충전소 리스트 -->
+    <table border="1">
+        <thead>
+            <tr>
+				<th>번호</th>
+                <th>이름</th>  
+                <th>주소</th>
+                <th>상세 위치</th>
+                <th>충전기 타입</th>
+                <th>급속충전</th>
+                <th>비고</th>
+                <th>전체자리</th>
+                <th>가용자리</th>
+            </tr>
+        </thead>
+        
+
+	<tbody th:each="chargers : ${chargers}">
+    	<tr>
+		   <td th:text="${chargers.no}"></td> 
+     	   <td th:text="${chargers.chrstn_nm}"></td>  
+    	   <td th:text="${chargers.addr}"></td> 
+    	   <td th:text="${chargers.dtl_pstn}"></td>
+    	   <td th:text="${chargers.chrgr_type}"></td> 
+    	   <td th:text="${chargers.rpd_elctc_qy}"></td> 
+    	   <td th:text="${chargers.rmrk}"></td> 
+    	   <td th:text="${chargers.slots}"></td> 
+    	   <td th:text="${chargers.available_slots}"></td> 
+   	 </tr>
+	</tbody>
+	</table>
+	
+	<button type="button" th:disabled="${page == 1}" th:onclick="'location.href=\'/admin/main?page=1\''">처음 페이지</button>
+	<button type="button" th:disabled="${page == 1}" th:onclick="'location.href=\'/admin/main?page=' + (${page - 1}) + '&size=' + ${size} + '\''">이전 페이지</button>
+	<button type="button" th:disabled="${page == totalPages}" th:onclick="'location.href=\'/admin/main?page=' + (${page + 1}) + '&size=' + ${size} + '\''">다음 페이지</button>
+	<button type="button" th:disabled="${page == totalPages}" th:onclick="'location.href=\'/admin/main?page=' + (${totalPages}) + '&size=' + ${size} + '\''">마지막 페이지</button>
+
+	</div>
+	<form th:action="@{/admin/deletereservation}" method="post">
+		<div class="form-group">
+			<label for="id">예약 ID:</label>
+			<input type="text" id="id" name="id" required />
+		</div>
+		<button type ="submit">예약 삭제</button>
+	</form>	
+	    <table>
+	<!--예약 리스트 -->
+    <table border="1">
+        <thead>
+            <tr>
+                <th>id</th>
+                <th>예약자</th>
+                <th>충전소 번호</th>
+                <th>충전소 이름</th>
+                <th>이용 시작</th>
+                <th>이용 종료</th>
+            </tr>
+        </thead>
+        
+	<tbody th:each="reservation : ${reservations}">
+    	<tr>
+     	   <td th:text="${reservation.id}"></td> 
+    	   <td th:text="${reservation.username}"></td> 
+     	   <td th:text="${reservation.chrgr_no}"></td> 
+     	   <td th:text="${reservation.chrstn_nm}"></td>
+    	   <td th:text="${reservation.startTime}"></td> 
+    	   <td th:text="${reservation.endTime}"></td> 
+   	 </tr>
+	</tbody>
+	</table>
+    
+</body>
+</html>
+

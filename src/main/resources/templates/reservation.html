@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Reservation Page</title>
+</head>
+<body>
+<h2>Reservation for: <span th:text="${name}"></span></h2>
+
+    <form th:action="@{/user/makeReservation}" method="post">
+        <!-- Hidden field for chrstnNm -->
+		<input type="hidden" id="chrstn_nm" name="chrstn_nm" th:value="${name}" />
+
+
+        <div class="form-group">
+            <label for ="startTime">시작 시간:</label>
+            <input type ="datetime-local" id ="startTime" name ="startTime" required />
+        </div>
+
+        <div class = "form-group">
+            <label for = "endTime">종료 시간:</label>
+            <input type = "datetime-local"id = "endTime" name = "endTime" required />
+         </div>
+
+         <!-- Submit button -->
+         <button type = "submit">예약하기</button> 
+     </form> 
+</body>
+</html>

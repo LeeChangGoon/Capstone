@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Home Page</title>
+</head>
+<body>
+	충전소 현황     
+	<div sec:authorize="hasRole('admin')">
+    	<button type ="button" onclick="location.href='/admin/main'">관리자 페이지</button>
+	</div>
+	<form th:action="@{/logout}" method = "post">
+      	<button type = "submit" onclick="location.href='/login'">로그아웃</button> 
+    </form>
+    마커를 누르시면 예약페이지로 이동합니다.
+	<div id="map" style="width:1000px;height:800px;"></div>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b279755158193580ee64057d8b1c3326&libraries=services"></script>
+
+	<script th:inline="javascript">
+    	var chargermarkers = /*[[${chargermarkers}]]*/ [];
+	</script>
+	
+	<script>
+		var container = document.getElementById('map');
+		var options = {
+			center: new kakao.maps.LatLng(36.362187, 127.356405),
+			level: 7
+		};
+
+		var map = new kakao.maps.Map(container, options);
+		
+		// [지도에 확대 축소 컨트롤 생성]
+		var zoomControl = new kakao.maps.ZoomControl();
+		// [지도의 우측에 확대 축소 컨트롤 추가]
+		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+		
+		// [마커 및 클러스터 생성]
+		var markers = []; // 마커들을 담을 배열
+		
+		// 주소-좌표 변환 객체를 생성합니다
+		var geocoder = new kakao.maps.services.Geocoder();
+		
+	for (let i = 0; i < chargermarkers.length; i++) { //let 쓰는이유: 주소 변환하는 도중에 i값이 넘어가버리는 것을 방지하기 위함. 
+    	geocoder.addressSearch(chargermarkers[i].address, function(result, status) {
+        	if (status === kakao.maps.services.Status.OK) {
+
+            	var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+            
+            	console.log("Generated coordinates:", coords);
+
+           		var marker = new kakao.maps.Marker({
+                	map: map,
+                	position: coords
+            	});
+
+            	markers.push(marker); // 마커를 배열에 추가
+            	console.log("충전소 이름:", chargermarkers[i].name);
+            	// [마커에 인포윈도우 표시]
+				var infowindow = new kakao.maps.InfoWindow({
+   				content: chargermarkers[i].name + " " +
+             			 chargermarkers[i].available_slots + "/" + chargermarkers[i].slots // 인포윈도우에 표시할 내용
+				});
+				// [마커에 이벤트 등록]
+				kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+				kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+				kakao.maps.event.addListener(marker, 'click', function() {
+    										 window.location.href = '/user/reservation?name=' + encodeURIComponent(chargermarkers[i].name);
+    										 });
+    										 }
+    	});
+	}
+	var clusterer = new kakao.maps.MarkerClusterer({
+	map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
+	averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
+	minLevel: 4 // 클러스터 할 최소 지도 레벨
+	});
+    
+    // 클러스터러에 마커들을 추가합니다
+	clusterer.addMarkers(markers);
+
+	// 인포윈도우를 표시하는 클로저를 만드는 함수
+	function makeOverListener(map, marker, infowindow) {
+	return function() {
+	infowindow.open(map, marker);
+	};
+	}
+
+	// 인포윈도우를 닫는 클로저를 만드는 함수
+	function makeOutListener(infowindow) {
+	return function() {
+	infowindow.close();
+	};
+	}
+
+	</script>
+	
+	<form th:action="@{/user/findChargers}" method="get">
+        <input type="text" id="searchaddr" name="searchaddr" placeholder="도로명 주소 입력(일부 가능)">
+        <button type="submit">검색</button>
+    </form>
+    
+	<!-- 검색 결과 리스트 -->
+	<ul th:if="${searchresults != null}">
+    	<li th:each="result : ${searchresults}">
+        	<span th:text="${result.chrstn_nm}"></span> :
+        	<span th:text="${result.addr}"></span>
+			<span>비고사항:</span> <span th:text="${result.rmrk}"></span>
+
+    	</li>
+	</ul>
+
+    
+</body>
+</html>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- src/main/resources/mapper/UserMapper.xml -->
+<mapper namespace="com.school.demo.mapper.UserMapper">
+
+    <select id="getUsers" resultType="com.school.demo.object.Members">
+        SELECT username, name, phoneNumber, role FROM users;
+    </select>
+    	
+    <select id="getReservations" resultType = "com.school.demo.object.Reservations">
+    	SELECT * FROM reservations; 
+    	</select>	
+    	
+    <select id="findByUsername" resultType="com.school.demo.object.UserVo">
+        SELECT * FROM users WHERE username = #{username};
+    </select>
+    
+	<select id="checkAdmin" resultType = "String">
+        SELECT role FROM users WHERE username = #{username};
+    </select>
+    
+    <insert id="joinUser">
+        INSERT INTO users (username, password, name, phoneNumber) VALUES (#{username}, #{password}, #{name}, #{phoneNumber});
+    </insert>   
+
+    <update id="updateRole">
+    	UPDATE users SET role = #{role} WHERE username = #{username};
+    </update>
+    
+    <update id="setAdmin">
+    	UPDATE users SET role = 'admin' WHERE username = #{username};
+    </update>
+    
+    <update id="setUser">
+    	UPDATE users SET role = 'user' WHERE username = #{username};
+    </update>
+    
+    <delete id="deleteUser">
+    	DELETE FROM users WHERE username = #{username};
+    </delete>      
+</mapper>

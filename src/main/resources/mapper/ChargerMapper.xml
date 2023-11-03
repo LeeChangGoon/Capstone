@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- src/main/resources/mapper/ChargerMapper.xml -->
+<mapper namespace="com.school.demo.mapper.ChargerMapper">
+
+	<select id="getAllChargers" resultType = "com.school.demo.object.Chargers">
+		SELECT * FROM chargers ORDER BY no ASC;
+    </select>
+
+    <select id="getChargers" resultType = "com.school.demo.object.Chargers">
+		SELECT * FROM chargers ORDER BY no ASC LIMIT #{limit} OFFSET #{offset};
+    </select>
+    
+    <select id="findChargerByname" resultType ="com.school.demo.object.Chargers" >
+		SELECT * FROM chargers WHERE chrstn_nm = #{chrstn_nm};
+    </select>
+    
+	<select id="findChargers" parameterType="String" resultType="com.school.demo.object.Chargers">
+   		SELECT * FROM Chargers WHERE addr LIKE CONCAT('%', #{searchaddr}, '%');
+	</select>
+	
+	<select id="getTotalCount">
+    	SELECT COUNT(*) FROM Chargers
+	</select>
+    
+    <update id="reservationCharger">
+    	UPDATE chargers SET available_slots = available_slots-1 WHERE chrstn_nm = #{name};
+    </update>
+    
+    <update id="plusSlot">
+    	Update chargers Set available_slots = available_slots+1 Where no = #{chrgr_no};
+    </update>
+    <insert id="insertChargers">
+        INSERT INTO chargers 
+        (no, chrstn_nm, chrgr_type, chrgr_id, utztn_psblty_hr,
+         rpd_elctc_qy, oper_inst, rmrk, addr,
+         dtl_pstn ,ctpv_code ,ctpv_nm ,
+         sgg_code ,sgg_nm ,adstrd_code ,
+         adstrd_nm ,stdg_code ,stdg_nm ,
+         crtr_ymd)
+        VALUES 
+        (#{no}, #{chrstn_nm}, #{chrgr_type}, #{chrgr_id}, #{utztn_psblty_hr},
+         #{rpd_elctc_qy}, #{oper_inst}, #{rmrk}, #{addr},
+         #{dtl_pstn} ,#{ctpv_code} ,
+         #{ctpv_nm} ,#{sgg_code} ,
+         #{sgg_nm} ,#{adstrd_code} ,
+	 #{adstrd_nm} ,#{stdg_code} ,
+	 #{stdg_nm} ,#{crtr_ymd})
+    </insert>
+    
+    
+</mapper>

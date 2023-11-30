@@ -5,11 +5,7 @@
 
     <select id="getUsers" resultType="com.school.demo.object.Members">
         SELECT username, name, phoneNumber, role FROM users;
-    </select>
-    	
-    <select id="getReservations" resultType = "com.school.demo.object.Reservations">
-    	SELECT * FROM reservations; 
-    	</select>	
+    </select>	
     	
     <select id="findByUsername" resultType="com.school.demo.object.UserVo">
         SELECT * FROM users WHERE username = #{username};

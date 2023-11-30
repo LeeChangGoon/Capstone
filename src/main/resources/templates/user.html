@@ -2,9 +2,63 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>사용자 관리 페이지</title>
+<title>내 예약 관리 페이지</title>
 </head>
 <body>
-
+	<h1>MyPage</h1>
+	<form th:action="@{/user/setReservation}" method="post" th:object="${ReservationSetRequest}">
+		<div class="form-group">
+	<h2>예약 현황</h2>
+			<label for="id">예약번호:</label>
+			<input type="number" id="id" name="id" required />
+		</div>
+		<button type="submit" name="action" value="Delete">예약 삭제</button>
+	</form>	
+	
+	<!-- 검색 결과 리스트 -->
+    <table border="1" th:if="${reservations != null}">
+       <thead>
+            <tr>
+                <th>예약 번호</th>
+                <th>예약자</th>
+                <th>충전소 번호</th>
+                <th>충전소 이름</th>
+                <th>이용 시작</th>
+                <th>이용 종료</th>
+                <th>주소</th>
+                <th>충전기 타입</th>
+            </tr>
+        </thead>
+        
+	<tbody th:each="reservation : ${reservations}">
+    	<tr>
+     	   <td th:text="${reservation.id}"></td> 
+    	   <td th:text="${reservation.username}"></td> 
+     	   <td th:text="${reservation.chrgr_no}"></td> 
+     	   <td th:text="${reservation.chrstn_nm}"></td>
+    	   <td th:text="${#temporals.format(reservation.startTime, 'yyyy-MM-dd HH:mm')}"></td> 
+    	   <td th:text="${#temporals.format(reservation.endTime, 'yyyy-MM-dd HH:mm')}"></td> 
+    	   <td th:text="${reservation.addr}"></td>
+    	   <td th:text="${reservation.chrgr_type}"></td>
+   	 </tr>
+	</tbody>
+	</table>
+	
+	<h2>예약 시간 수정</h2>
+<form th:action="@{/user/modifyReservation}" method="post" th:object="${ReservationModifyRequest}">
+	<div class="form-group">
+		<label for="id">예약번호:</label>
+		<input type="number" id="id" name="id" required />
+	</div>		
+		<div class="form-group">
+			<label for="startTime">시작 시간:</label>
+            <input type ="datetime-local" id ="startTime" name ="startTime" required />
+		</div>
+		<div class="form-group">
+			<label for="endTime">종료 시간:</label>
+            <input type = "datetime-local"id = "endTime" name = "endTime" required />
+		</div>
+		<button type="submit">수정하기</button>
+	</form>	
 </body>
 </html>

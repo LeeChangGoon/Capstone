@@ -1,5 +1,9 @@
 package com.school.demo.ErrorCode;
 
+import lombok.Data;
+import lombok.Getter;
+
+@Getter
 public enum ResultCode {
     SUCCESS(200, "Operation successful"),
     BAD_REQUEST(400, "Bad request"), //현재시간 이전의 시간 예약

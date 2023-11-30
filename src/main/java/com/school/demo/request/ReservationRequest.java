@@ -8,6 +8,7 @@ import lombok.Data;
 public class ReservationRequest {
 	
 	private String chrstn_nm;
+	private String chrgr_type;
 	private String startTime;
 	private String endTime;
 

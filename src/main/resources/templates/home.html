@@ -9,6 +9,9 @@
 	<div sec:authorize="hasRole('admin')">
     	<button type ="button" onclick="location.href='/admin/main'">관리자 페이지</button>
 	</div>
+	<div>
+    	<button type ="button" onclick="location.href='/user/main'">사용자 페이지</button>
+	</div>
 	<form th:action="@{/logout}" method = "post">
       	<button type = "submit" onclick="location.href='/login'">로그아웃</button> 
     </form>
@@ -100,14 +103,34 @@
     </form>
     
 	<!-- 검색 결과 리스트 -->
-	<ul th:if="${searchresults != null}">
-    	<li th:each="result : ${searchresults}">
-        	<span th:text="${result.chrstn_nm}"></span> :
-        	<span th:text="${result.addr}"></span>
-			<span>비고사항:</span> <span th:text="${result.rmrk}"></span>
-
-    	</li>
-	</ul>
+    <table border="1" th:if="${searchresults != null}">
+        <thead>
+            <tr>
+                <th>충전소</th>
+                <th>주소</th>
+                <th>비고 사항</th>
+                <th>급속충전</th>
+                <th>예약버튼</th>
+            </tr>
+        </thead>
+        
+	<tbody th:each="result : ${searchresults}">
+    	<tr>
+     	   <td th:text="${result.chrstn_nm}"></td> 
+    	   <td th:text="${result.addr}"></td> 
+     	   <td th:text="${result.rmrk}"></td> 
+     	   <td>
+    		<span th:if="${result.rpd_elctc_qy}" th:text="${result.rpd_elctc_qy}"></span>
+    		<span th:unless="${!#strings.isEmpty(result.rpd_elctc_qy)}">X</span>
+			</td>
+     	   <td>
+            	<a th:href="@{/user/reservation(name=${result.chrstn_nm})}">
+                	<button type="button">예약하기</button>
+            	</a>
+           </td>
+   	 	</tr>
+	</tbody>
+	</table>
 
     
 </body>

@@ -35,7 +35,7 @@
     
 	<tbody th:each="member : ${members}">
     	<tr>
-     	   <td th:text="${member.username}"></td> 
+     	   	<td th:text="${member.username}"></td> 
     	    <td th:text="${member.name}"></td>  
     	    <td th:text="${member.phoneNumber}"></td> 
     	    <td th:text="${member.role}"></td> 
@@ -46,8 +46,8 @@
         <h4>충전소 리스트</h4>
         	<form th:action="@{/admin/deletecharger}" action="post">
 		<div class="form-group">
-			<label for="id">충전소 No:</label>
-			<input type="text" id="id" name="id" required />
+			<label for="no">충전소 No:</label>
+			<input type="text" id="no" name="no" required />
 		</div>
 			<button type ="submit">충전소 삭제</button>
 		</form>	
@@ -93,7 +93,7 @@
 	<form th:action="@{/admin/deletereservation}" method="post">
 		<div class="form-group">
 			<label for="id">예약 ID:</label>
-			<input type="text" id="id" name="id" required />
+			<input type="number" id="id" name="id" required />
 		</div>
 		<button type ="submit">예약 삭제</button>
 	</form>	
@@ -112,14 +112,14 @@
         </thead>
         
 	<tbody th:each="reservation : ${reservations}">
-    	<tr>
-     	   <td th:text="${reservation.id}"></td> 
-    	   <td th:text="${reservation.username}"></td> 
-     	   <td th:text="${reservation.chrgr_no}"></td> 
+		<tr>
+     	   <td th:text="${reservation.id}"></td>
+    	   <td th:text="${reservation.username}"></td>
+     	   <td th:text="${reservation.chrgr_no}"></td>
      	   <td th:text="${reservation.chrstn_nm}"></td>
-    	   <td th:text="${reservation.startTime}"></td> 
-    	   <td th:text="${reservation.endTime}"></td> 
-   	 </tr>
+     	   <td th:text="${#temporals.format(reservation.startTime, 'yyyy-MM-dd HH:mm')}"></td>
+    	   <td th:text="${#temporals.format(reservation.endTime,'yyyy-MM-dd HH:mm')}"></td>
+    	   </tr>
 	</tbody>
 	</table>
     

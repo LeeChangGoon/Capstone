@@ -15,13 +15,25 @@
 		SELECT * FROM chargers WHERE chrstn_nm = #{chrstn_nm};
     </select>
     
+    <select id="findChargerBynameAndType" resultType ="com.school.demo.object.Chargers" >
+		SELECT * FROM chargers WHERE chrstn_nm = #{chrstn_nm} And chrgr_type = #{chrgr_type}
+    </select>
+    
 	<select id="findChargers" parameterType="String" resultType="com.school.demo.object.Chargers">
    		SELECT * FROM Chargers WHERE addr LIKE CONCAT('%', #{searchaddr}, '%');
+	</select>
+	
+	<select id="findTypes">
+		Select chrgr_type From chargers Where chrstn_nm = #{chrstn_nm};
 	</select>
 	
 	<select id="getTotalCount">
     	SELECT COUNT(*) FROM Chargers
 	</select>
+    
+    <delete id="deleteCharger">
+    	Delete From chargers Where no = #{no};
+    </delete>
     
     <update id="reservationCharger">
     	UPDATE chargers SET available_slots = available_slots-1 WHERE chrstn_nm = #{name};
@@ -29,6 +41,14 @@
     
     <update id="plusSlot">
     	Update chargers Set available_slots = available_slots+1 Where no = #{chrgr_no};
+    </update>
+    
+    <update id="slotMinus">
+    	Update chargers Set available_slots = slots-#{cnt} Where no = #{chrgr_no};
+    </update>
+    
+    <update id = "setSlot">
+    	Update chargers set available_slots = slots Where no = #{chrgr_no};
     </update>
     <insert id="insertChargers">
         INSERT INTO chargers 

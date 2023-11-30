@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>예약 시간 수정</title>
+</head>
+<body>
+	<h2>예약 시간 수정</h2>
+	
+	<form th:action="@{/reservation/modify}" method="post" th:object="${reservation}">
+		<div class="form-group">
+			<label for="startTime">시작 시간:</label>
+            <input type ="datetime-local" id ="startTime" name ="startTime" required />
+		</div>
+		<div class="form-group">
+			<label for="endTime">종료 시간:</label>
+            <input type = "datetime-local"id = "endTime" name = "endTime" required />
+		</div>
+		<button type="submit">수정하기</button>
+	</form>
+</body>
+</html>

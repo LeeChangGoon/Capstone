@@ -3,25 +3,39 @@
 <!-- src/main/resources/mapper/ChargerMapper.xml -->
 <mapper namespace="com.school.demo.mapper.ReservationMapper">
 
+    <select id="getReservations" resultType = "com.school.demo.object.Reservations">
+    	SELECT * FROM reservations; 
+    </select>
+	
+	<select id="getReservationsBychrgr" resultType = "com.school.demo.object.Reservations">
+		Select * From reservations Where chrgr_no = #{chrgr_no};
+	</select>
+	
 	<select id ="findReservationById" resultType = "com.school.demo.object.Reservations">
 		Select * From reservations Where id = #{id};
 	</select>
 	
 	<select id="findReservationByUsernameAndTime" resultType = "com.school.demo.object.Reservations">
-		Select * From reservations Where username = #{username} AND startTime=#{startTime} AND endTime=#{endTime};
+		Select * From reservations Where username = #{username} AND ((#{startTime} &gt;= startTime AND #{startTime} &lt; endTime) OR (#{endTime} &gt; startTime AND #{endTime} &lt;= endTime) OR (#{startTime} &lt;= startTime AND #{endTime} &gt;= endTime))
 	</select>
 	
 	<select id = "findReservationByTime" resultType="com.school.demo.object.Reservations" >
 		SELECT * FROM reservations WHERE chrgr_no = #{chrgr_no} AND ((#{startTime} &gt;= startTime AND #{startTime} &lt; endTime) OR (#{endTime} &gt; startTime AND #{endTime} &lt;= endTime) OR (#{startTime} &lt;= startTime AND #{endTime} &gt;= endTime))
 	</select>
-
+	
+	<select id = "findReservationByUsername" resultType="com.school.demo.object.Reservations" >
+		SELECT * FROM reservations Where username = #{username};
+	</select>
+	
 	<insert id="makeReservation">
-		INSERT INTO reservations (username, chrgr_no, chrstn_nm, startTime, endTime) VALUES (#{username}, #{chrgr_no}, #{chrstn_nm}, #{startTime}, #{endTime});
+		INSERT INTO reservations (username, chrgr_no, chrstn_nm, chrgr_type, startTime, endTime) VALUES (#{username}, #{chrgr_no}, #{chrstn_nm}, #{chrgr_type}, #{startTime}, #{endTime});
     </insert>
     
     <delete id="deleteReservation">
     	Delete From reservations Where id = #{id};
    	</delete>
-   	
+   	<update id="modifyReservation">
+   		Update reservations set startTime=#{startTime}, endTime=#{endTime} Where id=#{id};
+   	</update>
    	
 </mapper>

@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import com.school.demo.ErrorCode.ResultCode;
+import com.school.demo.exception.CustomException;
 import com.school.demo.mapper.UserMapper;
 import com.school.demo.object.Chargers;
 import com.school.demo.object.Members;
@@ -36,18 +38,25 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public List<Reservations> getReservations(){
-		List<Reservations> reservations = userMapper.getReservations();
-		return reservations;
-	}
-	@Override
-	public int joinUser(String username, String password, String name, String phoneNumber) {
-		String encodedPassword = passwordEncoder.encode(password);
-		int result = userMapper.joinUser(username,encodedPassword, name, phoneNumber);
-		if(result>0)
-			return result;
-		else return 0;
+	public ResultCode joinUser(String username, String password, String name, String phoneNumber) {
+		String regex = "^01(?:0|1|[6-9])-(?:\\d{3}|\\d{4})-\\d{4}$";
+		//username 중복 거르기
+		if(userMapper.findByUsername(username)!=null) {
+    		throw new CustomException(ResultCode.CONFLICT.getStatusCode(), "해당 username의 사용자가 이미 존재합니다.");
 		}
+		//phoneNumber 형식 검사
+		else if(!phoneNumber.matches(regex)) {
+			throw new CustomException(ResultCode.BAD_REQUEST.getStatusCode(), "전화번호 형식으로 입력해주세요.");
+		}
+		else {
+			String encodedPassword = passwordEncoder.encode(password);
+			int result = userMapper.joinUser(username,encodedPassword, name, phoneNumber);
+			if(result==1)
+				return ResultCode.SUCCESS;
+			else throw new CustomException(ResultCode.INTERNAL_SERVER_ERROR.getStatusCode(), "회원가입 실패");
+			}
+		}
+	//관리자인지 체크
 	@Override
 	public boolean checkAdmin(String username) {
 		
@@ -55,30 +64,28 @@ public class UserServiceImpl implements UserService {
 		if(role.equals("admin")) return true;
 		else return false;
 	}
-	
+	//이용자 삭제
 	@Override
-	public int deleteUser(String username) {
+	public ResultCode deleteUser(String username) {
 		
-		int result = userMapper.deleteUser(username);
-		
-		if(result>0) return result;
-		else return 0;
+		if(userMapper.deleteUser(username)==1) {
+			return ResultCode.SUCCESS;
+		}
+		else throw new CustomException(ResultCode.NOT_FOUND.getStatusCode(), "해당 이용자를 찾지 못했습니다.");
 	}
-	
+	//관리자 지정
 	@Override
-	public int setAdmin(String username) {
-		int result = userMapper.setAdmin(username);
+	public ResultCode setAdmin(String username) {
+		if(userMapper.setAdmin(username)>0) return ResultCode.SUCCESS;
+		else throw new CustomException(ResultCode.INTERNAL_SERVER_ERROR.getStatusCode(), "관리자 지정 실패");
 		
-		if(result>0) return result;
-		else return 0;
 	}
-	
+	//사용자로 변경
 	@Override
-	public int setUser(String username) {
-		int result = userMapper.setUser(username);
+	public ResultCode setUser(String username) {
+		if(userMapper.setAdmin(username)>0) return ResultCode.SUCCESS;
+		else throw new CustomException(ResultCode.INTERNAL_SERVER_ERROR.getStatusCode(), "사용자 지정 실패");
 		
-		if(result>0) return result;
-		else return 0;
 	}
 }
     

@@ -20,6 +20,12 @@ public interface ChargerMapper {
 	
 	Chargers findChargerByname(@Param("chrstn_nm") String chrstn_nm);
 	
+	Chargers findChargerBynameAndType(@Param("chrstn_nm") String chrstn_nm, @Param("chrgr_type") String chrgr_type);
+	
+	List<String> findTypes(@Param("chrstn_nm") String chrstn_nm);
+	
+	int deleteCharger(@Param("no") int no);
+	
 	void reservationCharger(@Param("name") String name); //예약하면 하나 자리 하나 감소
 	
 	int addChargers(@Param("location") String location, @Param("total_slots") int total_slots);
@@ -29,4 +35,8 @@ public interface ChargerMapper {
 	void insertChargers(Chargers chData);
 	
 	void plusSlot(@Param("chrgr_no") int chrgr_no);
+
+	void slotMinus(@Param("chrgr_no") int chrgr_no, @Param("cnt") int cnt);
+	
+	void setSlot(@Param("chrgr_no") int chrgr_no);
 }

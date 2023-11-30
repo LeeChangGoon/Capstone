@@ -1,5 +1,6 @@
 package com.school.demo.Controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,7 @@ public class AdminController {
 	public String adminPage(@RequestParam(defaultValue = "1") int page,
 	                        @RequestParam(defaultValue = "20") int size,
 	                        Model model) {
+		reservationService.checkNow(LocalDateTime.now());
 
 	    List<Members> members = userService.getUsers();
 	    model.addAttribute("members", members);
@@ -48,7 +50,7 @@ public class AdminController {
 	    List<Chargers> chargers = chargerService.getChargers(page, size);
 	    model.addAttribute("chargers", chargers);
 
-	    List<Reservations> reservations = userService.getReservations();
+	    List<Reservations> reservations = reservationService.getReservations();
 	    model.addAttribute("reservations", reservations);
 
 	    // 현재 페이지 번호와 한 페이지당 보여줄 데이터 개수(size)도 모델에 추가
@@ -56,8 +58,7 @@ public class AdminController {
 	    model.addAttribute("size", size);
 	    
 	    // 총 데이터 개수를 가져오는 메소드가 있다고 가정하고 totalPages 계산
-	    int totalChargersCount = chargerService.getTotalCount();  // getTotalCount()는 총 데이터 개수를 반환하는 메소드입니다.
-	                                                               // 해당 메소드가 없다면 적절한 방법으로 총 데이터 개수를 구해야 합니다.
+	    int totalChargersCount = chargerService.getTotalCount();  
 	    
 		int totalPages = (int)Math.ceil((double)totalChargersCount / size);
 		model.addAttribute("totalPages", totalPages);
@@ -81,28 +82,35 @@ public class AdminController {
     	String username = request.getUsername();
     	String action = request.getAction();
     	if(action.equals("Delete")){
-    		if(userService.deleteUser(username)==1)
+    		if(userService.deleteUser(username)==ResultCode.SUCCESS);
     			return "redirect:/admin/main";
     	}
     	else if(action.equals("SetAdmin")){
-    		if(userService.setAdmin(username)==1)
+    		if(userService.setAdmin(username)==ResultCode.SUCCESS)
     			return "redirect:/admin/main";
     	}
     	else if(action.equals("SetUser")) {
-    		if(userService.setUser(username)==1)
+    		if(userService.setUser(username)==ResultCode.SUCCESS)
     			return "redirect:/admin/main";
     	}
 		return "redirect:/admin/main";
     	}
     
     @PostMapping("/deletecharger")
-    public String deleteCharger(int no) {
-    	return "";
+    public String deleteCharsger(@RequestParam("no")int no) {
+    	
+    	if(chargerService.deleteChargers(no)==ResultCode.SUCCESS) return "redirect:/admin/main";
+    	
+    	else return ":/error";
+    	
     }
     
     @PostMapping("/deletereservation")
-    public String deleteReservation(@RequestParam int id) {
-    	if(reservationService.deleteReservation(id) == ResultCode.SUCCESS ) return "redirect:/admin/main";
-    	else throw new CustomException(ResultCode.INTERNAL_SERVER_ERROR.getStatusCode(), "삭제 실패");
-    }
+    public String deleteReservation(@RequestParam("id") int id) {
+        if (reservationService.deleteReservation(id) == ResultCode.SUCCESS) {
+            return "redirect:/admin/main";
+        } else {
+            return "redirect:/error";
+        }
+    }  
 }

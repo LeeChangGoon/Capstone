@@ -139,11 +139,16 @@
 	</tbody>
 	</table>
 	
-	<button type="button" class="btn btn-primary" th:disabled="${page == 1}" th:onclick="'location.href=\'/admin/main?page=1\''">처음 페이지</button>
-	<button type="button" class="btn btn-primary" th:disabled="${page == 1}" th:onclick="'location.href=\'/admin/main?page=' + (${page - 1}) + '&size=' + ${size} + '\''">이전 페이지</button>
-	<button type="button" class="btn btn-primary" th:disabled="${page == totalPages}" th:onclick="'location.href=\'/admin/main?page=' + (${page + 1}) + '&size=' + ${size} + '\''">다음 페이지</button>
-	<button type="button" class="btn btn-primary" th:disabled="${page == totalPages}" th:onclick="'location.href=\'/admin/main?page=' + (${totalPages}) + '&size=' + ${size} + '\''">마지막 페이지</button>
-		
+			<button type="button" class="btn btn-primary" th:disabled="${page == 1}" th:onclick="'location.href=\'/admin/main?page=1\''">처음 페이지</button>
+			<button type="button" class="btn btn-primary" th:disabled="${page == 1}" th:onclick="'location.href=\'/admin/main?page=' + (${page - 1}) + '&size=' + ${size} + '\''">이전 페이지</button>
+
+			<th:block th:each="pageNum : ${#numbers.sequence(1, totalPages)}">
+    			<button type="button" class="btn btn-primary" th:disabled="${page == pageNum}" th:onclick="'location.href=\'/admin/main?page=' + (${pageNum}) + '&size=' + ${size} + '\''">[[${pageNum}]]</button>
+			</th:block>
+				<!--${#numbers.sequence(1, totalPages)}는 Thymeleaf의 유틸리티 객체 중 하나인 #numbers를 사용한 표현입니다. 이 표현은 1부터 totalPages까지의 연속된 숫자 시퀀스를 생성 -->
+			<button type="button" class="btn btn-primary" th:disabled="${page == totalPages}" th:onclick="'location.href=\'/admin/main?page=' + (${page + 1}) + '&size=' + ${size} + '\''">다음 페이지</button>
+			<button type="button" class="btn btn-primary" th:disabled="${page == totalPages}" th:onclick="'location.href=\'/admin/main?page=' + (${totalPages}) + '&size=' + ${size} + '\''">마지막 페이지</button>
+
 		</div>
 	</div>
 	<!-- 충전소 리스트 종료 -->

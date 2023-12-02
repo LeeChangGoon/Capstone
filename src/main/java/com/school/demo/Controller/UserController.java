@@ -53,10 +53,12 @@ public class UserController {
 	//메인페이지
     @GetMapping("/home")
     public String HomePage(Model model) {
-    	
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	String username=((UserDetails)principal).getUsername();
+        model.addAttribute("Username",username);
     	reservationService.checkNow(LocalDateTime.now());
     	
-        List<Chargers> chargers = chargerService.getChargers(1,40);
+        List<Chargers> chargers = chargerService.getChargers(1,160);
         model.addAttribute("chargers", chargers);
         
         List<ChargerMarkers> chargermarkers = chargers.stream()
@@ -64,7 +66,6 @@ public class UserController {
                 .collect(Collectors.toList());
 
             model.addAttribute("chargermarkers", chargermarkers);
-
         
         return "home";
     }
@@ -76,8 +77,10 @@ public class UserController {
 
     	String username;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        
         if (principal instanceof UserDetails) {
             username = ((UserDetails) principal).getUsername();
+            model.addAttribute("Username",username);
         } else {
             throw new IllegalStateException("인증사용자가 아닙니다.");
         }
@@ -92,6 +95,10 @@ public class UserController {
     @GetMapping("/reservation")
     public String ReservationPage(@RequestParam String name, Model model) {
     	
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    	String username=((UserDetails)principal).getUsername();
+        model.addAttribute("Username",username);
+        
     	reservationService.checkNow(LocalDateTime.now());
         model.addAttribute("name", name);
         List<String> Types = chargerService.getType(name);

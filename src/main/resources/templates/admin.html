@@ -1,27 +1,77 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>임시 관리자 페이지</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- Custom fonts for this template-->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+
+<title>관리자 페이지</title>
 </head>
-<body>
+<body class="bg-gradient-light text-gray-800">
+	<nav class="navbar navbar-expand navbar-light bg-light topbar mb-4 static-top shadow">
+        <!-- Topbar Search -->
+    	<a href="/user/home">
+        	<h2 class="h3 mb-1 text-gray-800">유성구 전기차충전소 예약 및 관리 시스템</h2>
+    	</a>
+		<a style="margin-left: 50px;">관리자 페이지</a>
+	<ul class="navbar-nav ml-auto">
+	<div sec:authorize="hasRole('admin')">
+    <a class="btn btn-secondary d-flex" style="margin-top: 16px;" href="/admin/main">
+        <i class="fas fa-user-cog"></i> <!-- Font Awesome 아이콘 추가 -->
+        Admin Page
+    </a>
+	</div>
+    <div class="topbar-divider d-none d-sm-block"></div>
+    <li class="nav-item dropdown no-arrow">
+    	<a class="nav-link dropdown-toggle" href="" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small" th:text="${Username}"></span>
+									<i class="fas fa-user"></i>
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="/user/main">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    My Page
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                            </li>
+		</ul>
+	</nav>
 	
-	<form th:action="@{/logout}" method = "post">
-      <button type = "submit" onclick="location.href='/login'">로그아웃</button> 
-     </form>
-     <button type = "button" onclick="location.href='/user/home'">메인화면으로</button> 
+	<div class="card shadow mb-4">
+		<div class="card-header py-2">
+			<h6 class="m-1 font-weight-bold text-primary">사용자 관리</h6>
+		</div>
+		<div class="card-body">
 	<form th:action="@{/admin/usersetting}" method="post" th:object="${UserSetRequest}" >
 		<div class="form-group">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username" required />
+            <span><input type="text" id="username" name="username" class="form-control bg-light border-1 small col-md-2" placeholder="Username" required /></span>
         </div>
-        <button type ="submit" name="action" value="Delete">사용자 삭제</button> 
-    	<button type ="submit" name="action" value="SetAdmin">관리자로 설정</button> 
-    	<button type ="submit" name="action" value="SetUser">사용자로 설정</button> 
+        <button type ="submit" name="action" value="Delete" class="btn btn-primary">사용자 삭제</button> 
+    	<button type ="submit" name="action" value="SetAdmin" class="btn btn-primary">관리자로 설정</button> 
+    	<button type ="submit" name="action" value="SetUser" class="btn btn-primary">사용자로 설정</button> 
 	</form>
-
+			<div class="table-responsive">
     <!--사용자 리스트 -->
-    <table border="1">
+    <table border="1" class="table table-bordered text-gray-900">
         <thead>
             <tr>
                 <th>Username</th>
@@ -42,18 +92,23 @@
    	 </tr>
 	</tbody>
 
-    </table>
-        <h4>충전소 리스트</h4>
-        	<form th:action="@{/admin/deletecharger}" action="post">
-		<div class="form-group">
-			<label for="no">충전소 No:</label>
-			<input type="text" id="no" name="no" required />
+    			</table>
+			</div>
 		</div>
-			<button type ="submit">충전소 삭제</button>
-		</form>	
-    <table>
+	</div>
+	<div class="card shadow mb-4">
+		<div class="card-header py-3">
+			<h6 class="m-0 font-weight-bold text-primary">충전소 리스트</h6>
+		</div>
+		<div class="card-body">
+			<form th:action="@{/admin/deletecharger}" action="post">
+			<div class="input-group">
+				<input type="no" id="no" name="no" class="form-control bg-light border-1 small col-md-2" placeholder="번호 입력" required />	
+				<button type ="submit" class="btn btn-primary">삭제</button>	
+			</div>
+			</form>
 	<!--충전소 리스트 -->
-    <table border="1">
+    <table border="1" class="table table-bordered text-gray-900">
         <thead>
             <tr>
 				<th>번호</th>
@@ -84,22 +139,29 @@
 	</tbody>
 	</table>
 	
-	<button type="button" th:disabled="${page == 1}" th:onclick="'location.href=\'/admin/main?page=1\''">처음 페이지</button>
-	<button type="button" th:disabled="${page == 1}" th:onclick="'location.href=\'/admin/main?page=' + (${page - 1}) + '&size=' + ${size} + '\''">이전 페이지</button>
-	<button type="button" th:disabled="${page == totalPages}" th:onclick="'location.href=\'/admin/main?page=' + (${page + 1}) + '&size=' + ${size} + '\''">다음 페이지</button>
-	<button type="button" th:disabled="${page == totalPages}" th:onclick="'location.href=\'/admin/main?page=' + (${totalPages}) + '&size=' + ${size} + '\''">마지막 페이지</button>
-
-	</div>
-	<form th:action="@{/admin/deletereservation}" method="post">
-		<div class="form-group">
-			<label for="id">예약 ID:</label>
-			<input type="number" id="id" name="id" required />
+	<button type="button" class="btn btn-primary" th:disabled="${page == 1}" th:onclick="'location.href=\'/admin/main?page=1\''">처음 페이지</button>
+	<button type="button" class="btn btn-primary" th:disabled="${page == 1}" th:onclick="'location.href=\'/admin/main?page=' + (${page - 1}) + '&size=' + ${size} + '\''">이전 페이지</button>
+	<button type="button" class="btn btn-primary" th:disabled="${page == totalPages}" th:onclick="'location.href=\'/admin/main?page=' + (${page + 1}) + '&size=' + ${size} + '\''">다음 페이지</button>
+	<button type="button" class="btn btn-primary" th:disabled="${page == totalPages}" th:onclick="'location.href=\'/admin/main?page=' + (${totalPages}) + '&size=' + ${size} + '\''">마지막 페이지</button>
+		
 		</div>
-		<button type ="submit">예약 삭제</button>
+	</div>
+	<!-- 충전소 리스트 종료 -->
+	
+	<!-- 예약 리스트 -->
+	<div class="card shadow mb-4">
+	<div class="card-header py-3">
+		<h6 class="m-0 font-weight-bold text-primary">예약 리스트</h6>
+	</div>
+	<div class="card-body">		
+	<form th:action="@{/admin/deletereservation}" method="post">
+		<div class="input-group">
+			<input type="number" id="id" name="id" class="form-control bg-light border-1 small col-md-2" placeholder="ID 입력" required />
+			<button type ="submit" class="btn btn-primary">삭제</button>
+		</div>
 	</form>	
-	    <table>
 	<!--예약 리스트 -->
-    <table border="1">
+    <table border="1" class="table table-bordered text-gray-900">
         <thead>
             <tr>
                 <th>id</th>
@@ -122,7 +184,40 @@
     	   </tr>
 	</tbody>
 	</table>
-    
+	</div>
+	    </div>
+    <!-- Logout Modal-->
+    <form th:action="@{/logout}" method = "post">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary" type="submit" href="/login">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+    	
+    <!-- Core plugin JavaScript-->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <!-- Custom scripts for all pages-->
+    <script src="/js/sb-admin-2.min.js"></script>      
 </body>
 </html>
 

@@ -1,36 +1,100 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- Custom fonts for this template-->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
 <title>Reservation Page</title>
 </head>
-<body>
-<h2>Reservation for: <span th:text="${name}"></span></h2>
-
+<body class="bg-gradient-light text-gray-800">
+	<nav class="navbar navbar-expand navbar-light bg-light topbar mb-4 static-top shadow">
+        <!-- Topbar Search -->
+    	<a href="/user/home">
+        	<h2 class="h3 mb-1 text-gray-800">유성구 전기차충전소 예약 및 관리 시스템</h2>
+    	</a>
+	<ul class="navbar-nav ml-auto">
+	<div sec:authorize="hasRole('admin')">
+    <a class="btn btn-secondary d-flex" style="margin-top: 16px;" href="/admin/main">
+        <i class="fas fa-user-cog"></i> <!-- Font Awesome 아이콘 추가 -->
+        Admin Page
+    </a>
+	</div>
+    <div class="topbar-divider d-none d-sm-block"></div>
+    <li class="nav-item dropdown no-arrow">
+    	<a class="nav-link dropdown-toggle" href="" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 medium" th:text="${Username}"></span>
+                                <i class="fas fa-user"></i>
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="/user/main">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    My Page
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                            </li>
+	</ul>
+	</nav>
+	
+<div class="card shadow mb-4"  style="width: 1800px;">
+	<div class="card-header py-3">
+		<h5>Reservation for <span th:text="${name}"></span></h5>
+	</div>
+	<div class="card-body">
     <form th:action="@{/user/makeReservation}" method="post">
         <!-- Hidden field for chrstnNm -->
 		<input type="hidden" id="chrstn_nm" name="chrstn_nm" th:value="${name}" />
 
 
         <div class="form-group">
-            <label for ="startTime">시작 시간:</label>
-            <input type ="datetime-local" id ="startTime" name ="startTime" required />
+            <label for ="startTime">시작 시간</label>
+            <input type ="datetime-local" id ="startTime" name ="startTime" class="form-control bg-light border-1 small col-md-2" required />
         </div>
 
         <div class = "form-group">
-            <label for = "endTime">종료 시간:</label>
-            <input type = "datetime-local"id = "endTime" name = "endTime" required />
+            <label for = "endTime">종료 시간</label>
+            <input type = "datetime-local"id = "endTime" name = "endTime" class="form-control bg-light border-1 small col-md-2" required />
          </div>
          
     	<div class="form-group">
         	<label for="chrgr_type">타입:</label>
-        	<select id="chrgr_type" name="chrgr_type" required>
-            <option th:each="type : ${types}" th:value="${type}" th:text="${type}"></option>
+        	<select id="chrgr_type" class="form-control" style="width:200px" name="chrgr_type" required>
+            <option th:each="type : ${types}" th:value="${type}" th:text="${type}" ></option>
         	</select>
    		</div>
     
          <!-- Submit button -->
-         <button type = "submit">예약하기</button> 
-     </form> 
+         <button type = "submit" class="btn btn-primary">예약하기</button> 
+     </form>
+	</div>
+</div>     
+    <!-- Core plugin JavaScript-->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <!-- Custom scripts for all pages-->
+    <script src="/js/sb-admin-2.min.js"></script>  
 </body>
 </html>

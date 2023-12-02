@@ -1,116 +1,191 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!-- Custom fonts for this template-->
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <link href="/css/sb-admin-2.min.css" rel="stylesheet">
+
+
 <title>Home Page</title>
+    <style>
+		center-card {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .navbar-border {
+        	border-bottom: 2px solid #ddd; /* 옅은 테두리 스타일 및 색상 조정 가능 */
+        	padding-bottom: 5px; /* 테두리와 제목 사이 간격 조정 가능 */
+    }
+    </style>
 </head>
-<body>
-	충전소 현황     
+<body class="bg-gradient-light text-gray-800">
+	<nav class="navbar navbar-expand navbar-light bg-light topbar mb-4 static-top shadow">
+        <!-- Topbar Search -->
+    	<a href="/user/home">
+        	<h2 class="h3 mb-1 text-gray-800">유성구 전기차충전소 예약 및 관리 시스템</h2>
+    	</a>
+		<a style="margin-left: 50px;">충전소 현황</a>
+	<ul class="navbar-nav ml-auto">
 	<div sec:authorize="hasRole('admin')">
-    	<button type ="button" onclick="location.href='/admin/main'">관리자 페이지</button>
+    <a class="btn btn-secondary d-flex" style="margin-top: 16px;" href="/admin/main">
+        <i class="fas fa-user-cog"></i> <!-- Font Awesome 아이콘 추가 -->
+        Admin Page
+    </a>
 	</div>
-	<div>
-    	<button type ="button" onclick="location.href='/user/main'">사용자 페이지</button>
-	</div>
-	<form th:action="@{/logout}" method = "post">
-      	<button type = "submit" onclick="location.href='/login'">로그아웃</button> 
-    </form>
-    마커를 누르시면 예약페이지로 이동합니다.
-	<div id="map" style="width:1000px;height:800px;"></div>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b279755158193580ee64057d8b1c3326&libraries=services"></script>
+    <div class="topbar-divider d-none d-sm-block"></div>
+    <li class="nav-item dropdown no-arrow">
+    	<a class="nav-link dropdown-toggle" href="" id="userDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 medium" th:text="${Username}"></span>
+                                <i class="fas fa-user"></i>
+                            </a>
+                            <!-- Dropdown - User Information -->
+                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                aria-labelledby="userDropdown">
+                                <a class="dropdown-item" href="/user/main">
+                                    <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    My Page
+                                </a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Logout
+                                </a>
+                            </div>
+                            </li>
+	</ul>
+	</nav>
 
-	<script th:inline="javascript">
-    	var chargermarkers = /*[[${chargermarkers}]]*/ [];
-	</script>
+
+	<div class="card shadow mb-4">
+		<div class="card-header py-3">
+			<h6 class="m-0 font-weight-bold text-primary">마커를 누르시면 예약페이지로 이동합니다.</h6>
+		</div>
+		<div class="card-body">
+			<div id="map" class="card-header py-3 d-flex flex-row align-items-center justify-content-between text-gray-900" style="margin-left:200px;width:1500px;height:600px;">
+
+			<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=b279755158193580ee64057d8b1c3326&libraries=services"></script>
+
+			<script th:inline="javascript">
+    			var chargermarkers = /*[[${chargermarkers}]]*/ [];
+			</script>
 	
-	<script>
-		var container = document.getElementById('map');
-		var options = {
-			center: new kakao.maps.LatLng(36.362187, 127.356405),
-			level: 7
-		};
+		<script>
+			var container = document.getElementById('map');
+			var options = {
+				center: new kakao.maps.LatLng(36.362187, 127.356405),
+				level: 7
+			};
 
-		var map = new kakao.maps.Map(container, options);
+			var map = new kakao.maps.Map(container, options);
 		
-		// [지도에 확대 축소 컨트롤 생성]
-		var zoomControl = new kakao.maps.ZoomControl();
-		// [지도의 우측에 확대 축소 컨트롤 추가]
-		map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
+			// [지도에 확대 축소 컨트롤 생성]
+			var zoomControl = new kakao.maps.ZoomControl();
+			// [지도의 우측에 확대 축소 컨트롤 추가]
+			map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 		
-		// [마커 및 클러스터 생성]
-		var markers = []; // 마커들을 담을 배열
+			// [마커 및 클러스터 생성]
+			var markers = []; // 마커들을 담을 배열
 		
-		// 주소-좌표 변환 객체를 생성합니다
-		var geocoder = new kakao.maps.services.Geocoder();
+			// 주소-좌표 변환 객체를 생성합니다
+			var geocoder = new kakao.maps.services.Geocoder();
 		
-	for (let i = 0; i < chargermarkers.length; i++) { //let 쓰는이유: 주소 변환하는 도중에 i값이 넘어가버리는 것을 방지하기 위함. 
-    	geocoder.addressSearch(chargermarkers[i].address, function(result, status) {
-        	if (status === kakao.maps.services.Status.OK) {
+			for (let i = 0; i < chargermarkers.length; i++) { //let 쓰는이유: 주소 변환하는 도중에 i값이 넘어가버리는 것을 방지하기 위함. 
+    		geocoder.addressSearch(chargermarkers[i].address, function(result, status) {
+        		if (status === kakao.maps.services.Status.OK) {
 
-            	var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
+            		var coords = new kakao.maps.LatLng(result[0].y, result[0].x);
             
-            	console.log("Generated coordinates:", coords);
+            		console.log("Generated coordinates:", coords);
 
-           		var marker = new kakao.maps.Marker({
-                	map: map,
-                	position: coords
-            	});
+           			var marker = new kakao.maps.Marker({
+                		map: map,
+                		position: coords
+            		});
 
-            	markers.push(marker); // 마커를 배열에 추가
-            	console.log("충전소 이름:", chargermarkers[i].name);
-            	// [마커에 인포윈도우 표시]
-				var infowindow = new kakao.maps.InfoWindow({
-   				content: chargermarkers[i].name + " " +
+            		markers.push(marker); // 마커를 배열에 추가
+            		console.log("충전소 이름:", chargermarkers[i].name);
+            		// [마커에 인포윈도우 표시]
+					var infowindow = new kakao.maps.InfoWindow({
+   					content: chargermarkers[i].name + " " +
              			 chargermarkers[i].available_slots + "/" + chargermarkers[i].slots // 인포윈도우에 표시할 내용
-				});
-				// [마커에 이벤트 등록]
-				kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
-				kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
-				kakao.maps.event.addListener(marker, 'click', function() {
-    										 window.location.href = '/user/reservation?name=' + encodeURIComponent(chargermarkers[i].name);
-    										 });
-    										 }
-    	});
-	}
-	var clusterer = new kakao.maps.MarkerClusterer({
-	map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
-	averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
-	minLevel: 4 // 클러스터 할 최소 지도 레벨
-	});
+					});
+					// [마커에 이벤트 등록]
+					kakao.maps.event.addListener(marker, 'mouseover', makeOverListener(map, marker, infowindow));
+					kakao.maps.event.addListener(marker, 'mouseout', makeOutListener(infowindow));
+					kakao.maps.event.addListener(marker, 'click', function() {
+    										 	window.location.href = '/user/reservation?name=' + encodeURIComponent(chargermarkers[i].name);
+    										 	});
+    										 	}
+    		});
+		}
+		var clusterer = new kakao.maps.MarkerClusterer({
+		map: map, // 마커들을 클러스터로 관리하고 표시할 지도 객체
+		averageCenter: true, // 클러스터에 포함된 마커들의 평균 위치를 클러스터 마커 위치로 설정 
+		minLevel: 4 // 클러스터 할 최소 지도 레벨
+		});
     
-    // 클러스터러에 마커들을 추가합니다
-	clusterer.addMarkers(markers);
+    	// 클러스터러에 마커들을 추가합니다
+		clusterer.addMarkers(markers);
 
-	// 인포윈도우를 표시하는 클로저를 만드는 함수
-	function makeOverListener(map, marker, infowindow) {
-	return function() {
-	infowindow.open(map, marker);
-	};
-	}
+		// 인포윈도우를 표시하는 클로저를 만드는 함수
+		function makeOverListener(map, marker, infowindow) {
+		return function() {
+		infowindow.open(map, marker);
+		};
+		}
 
-	// 인포윈도우를 닫는 클로저를 만드는 함수
-	function makeOutListener(infowindow) {
-	return function() {
-	infowindow.close();
-	};
-	}
+		// 인포윈도우를 닫는 클로저를 만드는 함수
+		function makeOutListener(infowindow) {
+		return function() {
+		infowindow.close();
+		};
+		}
 
-	</script>
-	
-	<form th:action="@{/user/findChargers}" method="get">
-        <input type="text" id="searchaddr" name="searchaddr" placeholder="도로명 주소 입력(일부 가능)">
-        <button type="submit">검색</button>
-    </form>
-    
+		</script>
+			</div>
+		</div>	
+	</div>  
 	<!-- 검색 결과 리스트 -->
-    <table border="1" th:if="${searchresults != null}">
+<div class="card shadow mb-4"  style="width: 1800px;">
+	<div class="card-header py-3">
+		<h6 class="m-0 font-weight-bold text-primary">주소 검색</h6>
+	</div>
+	<div class="card-body">
+		<form th:action="@{/user/findChargers}" method="get">
+    		<div class="input-group">
+        		<input type="text" id="searchaddr" name="searchaddr" class="form-control bg-light border-1 small col-md-2" placeholder="도로명 주소 입력(일부 가능)">
+        		<div class="input-group-append">
+            		<button type="submit" class="btn btn-primary">
+               			<i class="fas fa-search fa-sm"></i>
+            		</button>
+        		</div>
+    		</div>
+		</form>
+		<div class="table-responsive">
+    		<table border="1" class="table table-bordered text-gray-900" id="dataTable" th:if="${searchresults != null}">
         <thead>
             <tr>
                 <th>충전소</th>
                 <th>주소</th>
                 <th>비고 사항</th>
                 <th>급속충전</th>
-                <th>예약버튼</th>
+                <th>전체Slot</th>
+                <th>이용가능Slot</th>
+                <th>예약</th>
             </tr>
         </thead>
         
@@ -123,15 +198,54 @@
     		<span th:if="${result.rpd_elctc_qy}" th:text="${result.rpd_elctc_qy}"></span>
     		<span th:unless="${!#strings.isEmpty(result.rpd_elctc_qy)}">X</span>
 			</td>
+     	   <td th:text="${result.slots}"></td> 
+     	   <td th:text="${result.available_slots}"></td> 
      	   <td>
-            	<a th:href="@{/user/reservation(name=${result.chrstn_nm})}">
-                	<button type="button">예약하기</button>
+            	<a th:href="@{/user/reservation(name=${result.chrstn_nm})}" class="btn btn-dark btn-icon-split"> 
+                   <span class="icon text-gray-600">
+                    	<i class="fas fa-arrow-right"></i>
+                   </span>
+                   <span class="text">예약</span>
             	</a>
            </td>
    	 	</tr>
 	</tbody>
-	</table>
-
+			</table>
+		</div>
+	</div>
+</div>	
+    <!-- Logout Modal-->
+    <form th:action="@{/logout}" method = "post">
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-primary" type="submit" href="/login">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
     
+    <!-- Core plugin JavaScript-->
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+
+
+    <!-- Custom scripts for all pages-->
+    <script src="/js/sb-admin-2.min.js"></script>    
 </body>
+
 </html>

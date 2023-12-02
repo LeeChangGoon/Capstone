@@ -20,17 +20,26 @@
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
     <style>
-        body {
+		center-card {
             height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
         }
+        .navbar-border {
+        	border-bottom: 2px solid #ddd; /* 옅은 테두리 스타일 및 색상 조정 가능 */
+        	padding-bottom: 5px; /* 테두리와 제목 사이 간격 조정 가능 */
+    }
     </style>
 </head>
 
-<body class="bg-gradient-primary">
-
+<body class="bg-gradient-light">
+	<nav class="navbar navbar-expand navbar-light bg-light topbar mb-4 static-top shadow">
+        <!-- Topbar Search -->
+    <a href="/login">
+        <h2 class="h3 mb-1 text-gray-800">유성구 전기차충전소 예약 및 관리 시스템</h2>
+    </a>
+	</nav>
     <div class="container">
 
         <!-- Outer Row -->
@@ -38,7 +47,8 @@
 
             <div class="col-xl-10 col-lg-12 col-md-9">
 
-                <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card o-hidden border-0 shadow-lg my-5 center-card">
+					
                     <div class="card-body p-0">
                         <!-- Nested Row within Card Body -->
                         <div class="row">

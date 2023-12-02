@@ -28,17 +28,19 @@ public class SecurityConfig {
         auth.userDetailsService(myUserDetailsService).passwordEncoder(passwordEncoder());
     }
 
-	@Bean 
-	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception { 
-		http.csrf(AbstractHttpConfigurer::disable)
-			.authorizeHttpRequests((authorizeRequests) -> { //http 요청 접근 제어규칙 
-				authorizeRequests.requestMatchers("/user/**").authenticated(); 
-				authorizeRequests.requestMatchers("/admin/**").hasRole("admin"); 
-				authorizeRequests.anyRequest().permitAll(); 
-			})
-	        .formLogin((formLogin) -> formLogin.loginPage("/login").defaultSuccessUrl("/user/home", true))
-			.logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/login"));
-		return http.build(); 
-	}
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception { 
+        http.csrf(AbstractHttpConfigurer::disable)
+            .authorizeHttpRequests((authorizeRequests) -> {
+                authorizeRequests.requestMatchers("/assets/**", "/js/**", "/css/**","/vendor/**").permitAll();
+                authorizeRequests.requestMatchers("/user/**").authenticated();
+                authorizeRequests.requestMatchers("/admin/**").hasRole("admin");
+                authorizeRequests.anyRequest().permitAll();
+            })
+            .formLogin((formLogin) -> formLogin.loginPage("/login").defaultSuccessUrl("/user/home", true))
+            .logout(logout -> logout.logoutUrl("/logout").logoutSuccessUrl("/login"));
+        return http.build();
+    }
+
 }
 

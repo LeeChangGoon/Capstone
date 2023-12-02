@@ -50,7 +50,7 @@ public class GlobalExceptionHandlerControllerAdvice {
         
         // 모델에 에러 메시지 추가
         model.addAttribute("errorMessage", "서버에서 오류가 발생했습니다.");
-        
+        model.addAttribute("errorCode", 500);
         // 에러 페이지로 포워드
         return "errorPage";
     }

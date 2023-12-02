@@ -106,7 +106,7 @@ public class AdminController {
     	
     	if(chargerService.deleteChargers(no)==ResultCode.SUCCESS) return "redirect:/admin/main";
     	
-    	else return ":/error";
+    	else throw new CustomException(ResultCode.INTERNAL_SERVER_ERROR.getStatusCode(),"관리자 문의 바람");
     	
     }
     

@@ -101,7 +101,7 @@
 			<h6 class="m-0 font-weight-bold text-primary">충전소 리스트</h6>
 		</div>
 		<div class="card-body">
-			<form th:action="@{/admin/deletecharger}" action="post">
+			<form th:action="@{/admin/deletecharger}" method="post">
 			<div class="input-group">
 				<input type="no" id="no" name="no" class="form-control bg-light border-1 small col-md-2" placeholder="번호 입력" required />	
 				<button type ="submit" class="btn btn-primary">삭제</button>	
@@ -154,12 +154,12 @@
 		<h6 class="m-0 font-weight-bold text-primary">예약 리스트</h6>
 	</div>
 	<div class="card-body">		
-	<form th:action="@{/admin/deletereservation}" method="post">
+		<form th:action="@{/admin/deletereservation}" method="post">
 		<div class="input-group">
 			<input type="number" id="id" name="id" class="form-control bg-light border-1 small col-md-2" placeholder="ID 입력" required />
 			<button type ="submit" class="btn btn-primary">삭제</button>
-		</div>
-	</form>	
+			</div>
+		</form>
 	<!--예약 리스트 -->
     <table border="1" class="table table-bordered text-gray-900">
         <thead>
@@ -220,4 +220,3 @@
     <script src="/js/sb-admin-2.min.js"></script>      
 </body>
 </html>
-

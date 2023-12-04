@@ -1,5 +1,8 @@
 server:
   port: 9091
+  servlet:
+    session:
+      timeout: 20m  
 spring:
   datasource:
     url: jdbc:mysql://localhost:3306/parking

@@ -83,7 +83,7 @@ public class UserServiceImpl implements UserService {
 	//사용자로 변경
 	@Override
 	public ResultCode setUser(String username) {
-		if(userMapper.setAdmin(username)>0) return ResultCode.SUCCESS;
+		if(userMapper.setUser(username)==1) return ResultCode.SUCCESS;
 		else throw new CustomException(ResultCode.INTERNAL_SERVER_ERROR.getStatusCode(), "사용자 지정 실패");
 		
 	}

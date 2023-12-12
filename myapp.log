@@ -1,24 +1,8 @@
-2023-12-04T13:52:39.655+09:00  INFO 18080 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-12-04T13:52:39.661+09:00  INFO 18080 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-12-04T13:52:41.794+09:00  INFO 18080 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
-2023-12-04T13:52:41.808+09:00  INFO 18080 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-12-04T13:52:41.808+09:00  INFO 18080 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
-2023-12-04T13:52:41.896+09:00  INFO 18080 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-12-04T13:52:41.897+09:00  INFO 18080 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2234 ms
-2023-12-04T13:52:42.696+09:00  INFO 18080 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@345a4b57, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4925cf2d, org.springframework.security.web.context.SecurityContextHolderFilter@79025fd4, org.springframework.security.web.header.HeaderWriterFilter@2b5dd8d1, org.springframework.security.web.authentication.logout.LogoutFilter@406a5414, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6e947687, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1153075c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@46ba5c59, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@31c3cfcb, org.springframework.security.web.access.ExceptionTranslationFilter@37498eb8, org.springframework.security.web.access.intercept.AuthorizationFilter@47a9f00c]
-2023-12-04T13:52:46.856+09:00  INFO 18080 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2023-12-04T13:52:46.907+09:00  INFO 18080 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
-2023-12-04T13:52:53.543+09:00  INFO 18080 --- [http-nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-12-04T13:52:53.543+09:00  INFO 18080 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-12-04T13:52:53.545+09:00  INFO 18080 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2023-12-04T13:52:56.711+09:00  INFO 18080 --- [http-nio-9091-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-12-04T13:52:57.070+09:00  INFO 18080 --- [http-nio-9091-exec-10] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@2a6ea8a
-2023-12-04T13:52:57.073+09:00  INFO 18080 --- [http-nio-9091-exec-10] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-12-04T13:58:33.560+09:00  WARN 18080 --- [http-nio-9091-exec-1] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.school.demo.Controller.AdminController
-2023-12-04T14:04:21.787+09:00  INFO 18080 --- [RMI TCP Connection(15)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
-2023-12-04T14:04:21.829+09:00  INFO 18080 --- [RMI TCP Connection(15)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2023-12-04T14:04:21.831+09:00  INFO 18080 --- [RMI TCP Connection(15)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
-2023-12-04T14:04:21.842+09:00  WARN 18080 --- [RMI TCP Connection(15)-127.0.0.1] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+2023-12-11T00:06:21.782+09:00  WARN 18904 --- [http-nio-9091-exec-4] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.school.demo.Controller.AdminController
+2023-12-11T00:18:03.764+09:00  INFO 18904 --- [File Watcher] rtingClassPathChangeChangedEventListener : Restarting due to 1 class path change (0 additions, 0 deletions, 1 modification)
+2023-12-11T00:18:03.802+09:00  INFO 18904 --- [Thread-11] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-12-11T00:18:03.803+09:00  INFO 18904 --- [Thread-11] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-12-11T00:18:03.809+09:00  WARN 18904 --- [Thread-11] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-3 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  java.base/jdk.internal.misc.Unsafe.park(Native Method)
  java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
  java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1758)
@@ -28,29 +12,28 @@
  java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
  java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
  java.base/java.lang.Thread.run(Thread.java:1623)
-2023-12-04T14:04:21.868+09:00  INFO 18080 --- [RMI TCP Connection(15)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-12-04T14:04:21.875+09:00  INFO 18080 --- [RMI TCP Connection(15)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2023-12-04T14:04:24.074+09:00  INFO 4024 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-12-04T14:04:24.075+09:00  INFO 4024 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-12-04T14:04:25.732+09:00  INFO 4024 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
-2023-12-04T14:04:25.748+09:00  INFO 4024 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-12-04T14:04:25.748+09:00  INFO 4024 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
-2023-12-04T14:04:25.846+09:00  INFO 4024 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-12-04T14:04:25.847+09:00  INFO 4024 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1771 ms
-2023-12-04T14:04:26.542+09:00  INFO 4024 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@51395242, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2d01bbc5, org.springframework.security.web.context.SecurityContextHolderFilter@1d213c6c, org.springframework.security.web.header.HeaderWriterFilter@41ae48f4, org.springframework.security.web.authentication.logout.LogoutFilter@526b951d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@38b88f97, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@34e4b8c2, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@d2b1568, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6059013a, org.springframework.security.web.access.ExceptionTranslationFilter@98785d5, org.springframework.security.web.access.intercept.AuthorizationFilter@425a73c2]
-2023-12-04T14:04:27.496+09:00  INFO 4024 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2023-12-04T14:04:27.543+09:00  INFO 4024 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
-2023-12-04T14:04:27.604+09:00  INFO 4024 --- [http-nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-12-04T14:04:27.605+09:00  INFO 4024 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-12-04T14:04:27.606+09:00  INFO 4024 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2023-12-04T14:04:27.649+09:00  WARN 4024 --- [http-nio-9091-exec-1] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.school.demo.Controller.AdminController
-2023-12-04T14:04:27.675+09:00  INFO 4024 --- [http-nio-9091-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-12-04T14:04:28.053+09:00  INFO 4024 --- [http-nio-9091-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@73d69928
-2023-12-04T14:04:28.056+09:00  INFO 4024 --- [http-nio-9091-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-12-04T14:06:51.434+09:00  INFO 4024 --- [RMI TCP Connection(7)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
-2023-12-04T14:06:51.471+09:00  INFO 4024 --- [RMI TCP Connection(7)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2023-12-04T14:06:51.476+09:00  INFO 4024 --- [RMI TCP Connection(7)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
-2023-12-04T14:06:51.487+09:00  WARN 4024 --- [RMI TCP Connection(7)-127.0.0.1] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+2023-12-11T00:18:03.811+09:00  INFO 18904 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown initiated...
+2023-12-11T00:18:03.816+09:00  INFO 18904 --- [Thread-11] com.zaxxer.hikari.HikariDataSource       : HikariPool-3 - Shutdown completed.
+2023-12-11T00:18:04.266+09:00  INFO 18904 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
+2023-12-11T00:18:04.267+09:00  INFO 18904 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2023-12-11T00:18:04.267+09:00  INFO 18904 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
+2023-12-11T00:18:04.298+09:00  INFO 18904 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2023-12-11T00:18:04.298+09:00  INFO 18904 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 377 ms
+2023-12-11T00:18:04.493+09:00  INFO 18904 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@229b3eb5, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4ea3434b, org.springframework.security.web.context.SecurityContextHolderFilter@780c67bd, org.springframework.security.web.header.HeaderWriterFilter@407946ff, org.springframework.security.web.authentication.logout.LogoutFilter@3f132c7d, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@1b9af082, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@755edf57, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2ddab7f0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@31f29c79, org.springframework.security.web.access.ExceptionTranslationFilter@308d1a26, org.springframework.security.web.access.intercept.AuthorizationFilter@2f6a188e]
+2023-12-11T00:18:04.547+09:00  INFO 18904 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2023-12-11T00:18:04.558+09:00  INFO 18904 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
+2023-12-11T00:18:04.564+09:00  INFO 18904 --- [restartedMain] .ConditionEvaluationDeltaLoggingListener : Condition evaluation unchanged
+2023-12-11T00:44:33.704+09:00  INFO 18904 --- [http-nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2023-12-11T00:44:33.705+09:00  INFO 18904 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2023-12-11T00:44:33.706+09:00  INFO 18904 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2023-12-11T01:04:22.332+09:00  INFO 18904 --- [http-nio-9091-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Starting...
+2023-12-11T01:04:22.348+09:00  INFO 18904 --- [http-nio-9091-exec-4] com.zaxxer.hikari.pool.HikariPool        : HikariPool-4 - Added connection com.mysql.cj.jdbc.ConnectionImpl@58bae47a
+2023-12-11T01:04:22.348+09:00  INFO 18904 --- [http-nio-9091-exec-4] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Start completed.
+2023-12-11T01:04:24.600+09:00  WARN 18904 --- [http-nio-9091-exec-10] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.school.demo.Controller.UserController
+2023-12-11T02:05:24.911+09:00  INFO 18904 --- [RMI TCP Connection(187)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
+2023-12-11T02:05:24.948+09:00  INFO 18904 --- [RMI TCP Connection(187)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2023-12-11T02:05:24.949+09:00  INFO 18904 --- [RMI TCP Connection(187)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
+2023-12-11T02:05:24.952+09:00  WARN 18904 --- [RMI TCP Connection(187)-127.0.0.1] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-4 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
  java.base/jdk.internal.misc.Unsafe.park(Native Method)
  java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
  java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1758)
@@ -60,135 +43,5 @@
  java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
  java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
  java.base/java.lang.Thread.run(Thread.java:1623)
-2023-12-04T14:06:51.510+09:00  INFO 4024 --- [RMI TCP Connection(7)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-12-04T14:06:51.518+09:00  INFO 4024 --- [RMI TCP Connection(7)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2023-12-04T14:06:53.573+09:00  INFO 9020 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-12-04T14:06:53.574+09:00  INFO 9020 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-12-04T14:06:55.141+09:00  INFO 9020 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
-2023-12-04T14:06:55.151+09:00  INFO 9020 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-12-04T14:06:55.152+09:00  INFO 9020 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
-2023-12-04T14:06:55.233+09:00  INFO 9020 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-12-04T14:06:55.234+09:00  INFO 9020 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1659 ms
-2023-12-04T14:06:55.845+09:00  INFO 9020 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@7e57f500, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@46cff398, org.springframework.security.web.context.SecurityContextHolderFilter@6fe16b8d, org.springframework.security.web.header.HeaderWriterFilter@345a4b57, org.springframework.security.web.authentication.logout.LogoutFilter@5f7e921b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@67abf17b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6e3c6f6f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1d213c6c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@425a73c2, org.springframework.security.web.access.ExceptionTranslationFilter@79602fc5, org.springframework.security.web.access.intercept.AuthorizationFilter@69665237]
-2023-12-04T14:06:56.757+09:00  INFO 9020 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2023-12-04T14:06:56.803+09:00  INFO 9020 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
-2023-12-04T14:06:59.995+09:00  INFO 9020 --- [http-nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-12-04T14:06:59.996+09:00  INFO 9020 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-12-04T14:06:59.997+09:00  INFO 9020 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2023-12-04T14:07:00.047+09:00  WARN 9020 --- [http-nio-9091-exec-1] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.school.demo.Controller.AdminController
-2023-12-04T14:07:00.085+09:00  INFO 9020 --- [http-nio-9091-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-12-04T14:07:00.469+09:00  INFO 9020 --- [http-nio-9091-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@b0b77ba
-2023-12-04T14:07:00.472+09:00  INFO 9020 --- [http-nio-9091-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-12-04T14:08:10.846+09:00  INFO 9020 --- [RMI TCP Connection(5)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
-2023-12-04T14:08:10.889+09:00  INFO 9020 --- [RMI TCP Connection(5)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2023-12-04T14:08:10.893+09:00  INFO 9020 --- [RMI TCP Connection(5)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
-2023-12-04T14:08:10.897+09:00  WARN 9020 --- [RMI TCP Connection(5)-127.0.0.1] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base/jdk.internal.misc.Unsafe.park(Native Method)
- java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
- java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1758)
- java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
- java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
- java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
- java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
- java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
- java.base/java.lang.Thread.run(Thread.java:1623)
-2023-12-04T14:08:10.932+09:00  INFO 9020 --- [RMI TCP Connection(5)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-12-04T14:08:10.950+09:00  INFO 9020 --- [RMI TCP Connection(5)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2023-12-04T14:08:13.082+09:00  INFO 27224 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-12-04T14:08:13.083+09:00  INFO 27224 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-12-04T14:08:14.616+09:00  INFO 27224 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
-2023-12-04T14:08:14.627+09:00  INFO 27224 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-12-04T14:08:14.628+09:00  INFO 27224 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
-2023-12-04T14:08:14.718+09:00  INFO 27224 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-12-04T14:08:14.718+09:00  INFO 27224 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1634 ms
-2023-12-04T14:08:15.360+09:00  INFO 27224 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@5c587128, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@406a5414, org.springframework.security.web.context.SecurityContextHolderFilter@3efa367f, org.springframework.security.web.header.HeaderWriterFilter@b6638ad, org.springframework.security.web.authentication.logout.LogoutFilter@cef9896, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7af301b5, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7f16a665, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2e249539, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@57b16032, org.springframework.security.web.access.ExceptionTranslationFilter@404adb84, org.springframework.security.web.access.intercept.AuthorizationFilter@3bd706bf]
-2023-12-04T14:08:16.263+09:00  INFO 27224 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2023-12-04T14:08:16.304+09:00  INFO 27224 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
-2023-12-04T14:08:17.459+09:00  INFO 27224 --- [http-nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-12-04T14:08:17.460+09:00  INFO 27224 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-12-04T14:08:17.461+09:00  INFO 27224 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2023-12-04T14:08:19.943+09:00  INFO 27224 --- [http-nio-9091-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-12-04T14:08:20.249+09:00  INFO 27224 --- [http-nio-9091-exec-9] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@70756d5e
-2023-12-04T14:08:20.252+09:00  INFO 27224 --- [http-nio-9091-exec-9] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-12-04T14:08:22.723+09:00  WARN 27224 --- [http-nio-9091-exec-8] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.school.demo.Controller.AdminController
-2023-12-04T14:09:20.195+09:00  INFO 27224 --- [RMI TCP Connection(3)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
-2023-12-04T14:09:20.240+09:00  INFO 27224 --- [RMI TCP Connection(3)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2023-12-04T14:09:20.243+09:00  INFO 27224 --- [RMI TCP Connection(3)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
-2023-12-04T14:09:20.256+09:00  WARN 27224 --- [RMI TCP Connection(3)-127.0.0.1] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base/jdk.internal.misc.Unsafe.park(Native Method)
- java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
- java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1758)
- java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
- java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
- java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
- java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
- java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
- java.base/java.lang.Thread.run(Thread.java:1623)
-2023-12-04T14:09:20.279+09:00  INFO 27224 --- [RMI TCP Connection(3)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-12-04T14:09:20.285+09:00  INFO 27224 --- [RMI TCP Connection(3)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2023-12-04T14:09:22.421+09:00  INFO 16896 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-12-04T14:09:22.422+09:00  INFO 16896 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-12-04T14:09:23.886+09:00  INFO 16896 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
-2023-12-04T14:09:23.895+09:00  INFO 16896 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-12-04T14:09:23.896+09:00  INFO 16896 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
-2023-12-04T14:09:23.977+09:00  INFO 16896 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-12-04T14:09:23.977+09:00  INFO 16896 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1554 ms
-2023-12-04T14:09:24.682+09:00  INFO 16896 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@46cff398, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@425a73c2, org.springframework.security.web.context.SecurityContextHolderFilter@98785d5, org.springframework.security.web.header.HeaderWriterFilter@4925cf2d, org.springframework.security.web.authentication.logout.LogoutFilter@5067814f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4ad9d90a, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@41ae48f4, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2efb2ed4, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@38b88f97, org.springframework.security.web.access.ExceptionTranslationFilter@340d5e20, org.springframework.security.web.access.intercept.AuthorizationFilter@67abf17b]
-2023-12-04T14:09:25.710+09:00  INFO 16896 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2023-12-04T14:09:25.753+09:00  INFO 16896 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
-2023-12-04T14:09:27.115+09:00  INFO 16896 --- [http-nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-12-04T14:09:27.115+09:00  INFO 16896 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-12-04T14:09:27.116+09:00  INFO 16896 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
-2023-12-04T14:09:27.187+09:00  INFO 16896 --- [http-nio-9091-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-12-04T14:09:27.540+09:00  INFO 16896 --- [http-nio-9091-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@20a6f44b
-2023-12-04T14:09:27.543+09:00  INFO 16896 --- [http-nio-9091-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-12-04T14:09:27.601+09:00  WARN 16896 --- [http-nio-9091-exec-2] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.school.demo.Controller.AdminController
-2023-12-04T14:17:37.731+09:00  WARN 16896 --- [http-nio-9091-exec-4] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.school.demo.Controller.UserController
-2023-12-04T14:18:33.655+09:00  INFO 16896 --- [RMI TCP Connection(12)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
-2023-12-04T14:18:33.697+09:00  INFO 16896 --- [RMI TCP Connection(12)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2023-12-04T14:18:33.699+09:00  INFO 16896 --- [RMI TCP Connection(12)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
-2023-12-04T14:18:33.713+09:00  WARN 16896 --- [RMI TCP Connection(12)-127.0.0.1] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base/jdk.internal.misc.Unsafe.park(Native Method)
- java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
- java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1758)
- java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
- java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
- java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
- java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
- java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
- java.base/java.lang.Thread.run(Thread.java:1623)
-2023-12-04T14:18:34.047+09:00  INFO 16896 --- [RMI TCP Connection(12)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-12-04T14:18:34.054+09:00  INFO 16896 --- [RMI TCP Connection(12)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
-2023-12-04T14:18:36.187+09:00  INFO 20236 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
-2023-12-04T14:18:36.188+09:00  INFO 20236 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
-2023-12-04T14:18:37.655+09:00  INFO 20236 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 9091 (http)
-2023-12-04T14:18:37.665+09:00  INFO 20236 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2023-12-04T14:18:37.666+09:00  INFO 20236 --- [restartedMain] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.13]
-2023-12-04T14:18:37.746+09:00  INFO 20236 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2023-12-04T14:18:37.747+09:00  INFO 20236 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1558 ms
-2023-12-04T14:18:38.407+09:00  INFO 20236 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.session.DisableEncodeUrlFilter@6059013a, org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@47fd1352, org.springframework.security.web.context.SecurityContextHolderFilter@34e4b8c2, org.springframework.security.web.header.HeaderWriterFilter@10eb6e09, org.springframework.security.web.authentication.logout.LogoutFilter@54c77142, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@406cfdee, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@6b6292a7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2d537771, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@5c4de2ad, org.springframework.security.web.access.ExceptionTranslationFilter@41ae48f4, org.springframework.security.web.access.intercept.AuthorizationFilter@79868275]
-2023-12-04T14:18:39.440+09:00  INFO 20236 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
-2023-12-04T14:18:39.481+09:00  INFO 20236 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9091 (http) with context path ''
-2023-12-04T14:18:57.263+09:00  INFO 20236 --- [http-nio-9091-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2023-12-04T14:18:57.263+09:00  INFO 20236 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2023-12-04T14:18:57.265+09:00  INFO 20236 --- [http-nio-9091-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
-2023-12-04T14:18:57.336+09:00  INFO 20236 --- [http-nio-9091-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2023-12-04T14:18:57.680+09:00  INFO 20236 --- [http-nio-9091-exec-1] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection com.mysql.cj.jdbc.ConnectionImpl@355770c0
-2023-12-04T14:18:57.682+09:00  INFO 20236 --- [http-nio-9091-exec-1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2023-12-04T14:19:07.112+09:00  WARN 20236 --- [http-nio-9091-exec-3] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.school.demo.Controller.UserController
-2023-12-04T14:19:12.253+09:00  WARN 20236 --- [http-nio-9091-exec-2] ocalVariableTableParameterNameDiscoverer : Using deprecated '-debug' fallback for parameter name resolution. Compile the affected code with '-parameters' instead or avoid its introspection: com.school.demo.Controller.AdminController
-2023-12-04T15:08:56.203+09:00  INFO 20236 --- [RMI TCP Connection(53)-127.0.0.1] inMXBeanRegistrar$SpringApplicationAdmin : Application shutdown requested.
-2023-12-04T15:08:56.255+09:00  INFO 20236 --- [RMI TCP Connection(53)-127.0.0.1] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2023-12-04T15:08:56.264+09:00  INFO 20236 --- [RMI TCP Connection(53)-127.0.0.1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Destroying Spring FrameworkServlet 'dispatcherServlet'
-2023-12-04T15:08:56.270+09:00  WARN 20236 --- [RMI TCP Connection(53)-127.0.0.1] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [HikariPool-1 housekeeper] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
- java.base/jdk.internal.misc.Unsafe.park(Native Method)
- java.base/java.util.concurrent.locks.LockSupport.parkNanos(LockSupport.java:269)
- java.base/java.util.concurrent.locks.AbstractQueuedSynchronizer$ConditionObject.awaitNanos(AbstractQueuedSynchronizer.java:1758)
- java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:1182)
- java.base/java.util.concurrent.ScheduledThreadPoolExecutor$DelayedWorkQueue.take(ScheduledThreadPoolExecutor.java:899)
- java.base/java.util.concurrent.ThreadPoolExecutor.getTask(ThreadPoolExecutor.java:1070)
- java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1130)
- java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:642)
- java.base/java.lang.Thread.run(Thread.java:1623)
-2023-12-04T15:08:56.319+09:00  INFO 20236 --- [RMI TCP Connection(53)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
-2023-12-04T15:08:56.329+09:00  INFO 20236 --- [RMI TCP Connection(53)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-12-11T02:05:24.956+09:00  INFO 18904 --- [RMI TCP Connection(187)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown initiated...
+2023-12-11T02:05:24.960+09:00  INFO 18904 --- [RMI TCP Connection(187)-127.0.0.1] com.zaxxer.hikari.HikariDataSource       : HikariPool-4 - Shutdown completed.

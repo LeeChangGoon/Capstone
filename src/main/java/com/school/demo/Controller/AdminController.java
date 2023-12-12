@@ -62,7 +62,6 @@ public class AdminController {
 	    model.addAttribute("page", page);
 	    model.addAttribute("size", size);
 	    
-	    // 총 데이터 개수를 가져오는 메소드가 있다고 가정하고 totalPages 계산
 	    int totalChargersCount = chargerService.getTotalCount();  
 	    
 		int totalPages = (int)Math.ceil((double)totalChargersCount / size);

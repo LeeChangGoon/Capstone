@@ -158,9 +158,6 @@ public class UserController {
         	}
         	else throw new CustomException(ResultCode.INTERNAL_SERVER_ERROR.getStatusCode(), "삭제 실패");
     	}
-    	else if(action.equals("Modify")) {
-    		return "Modify";
-    	}
     	return "redirect:/user/main";
     }
     

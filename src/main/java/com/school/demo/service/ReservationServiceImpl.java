@@ -30,7 +30,6 @@ public class ReservationServiceImpl implements ReservationService{
     @Override
     public ResultCode makeReservation(String username, String chrstn_nm, String chrgr_type, LocalDateTime startTime, LocalDateTime endTime) {
         int chrgr_no = chargerMapper.findChargerBynameAndType(chrstn_nm, chrgr_type).getNo();
-        //Chargers charger = chargerMapper.findChargerBynameAndType(chrstn_nm, chrgr_type);
         synchronized(this){
         	// 동일 사용자가 예약했던 시간대에 두 번 이상 예약 불가
         	List<Reservations> existingReservation = reservationMapper.findReservationByUsernameAndTime(username, startTime, endTime);
@@ -53,8 +52,6 @@ public class ReservationServiceImpl implements ReservationService{
         	else if (!startTime.isBefore(endTime)) {
         		throw new CustomException(ResultCode.CONFLICT.getStatusCode(), "시작시간이 종료시간보다 늦습니다.");
         	}
-
-        	//int result = reservationMapper.makeReservation(username, chrgr_no, chrstn_nm, startTime, endTime);
 
         	// 모든 예외 케이스 통과 후 예약 생성
         	if (reservationMapper.makeReservation(username, chrgr_no, chrstn_nm, chrgr_type, startTime, endTime)>0) {
@@ -105,7 +102,6 @@ public class ReservationServiceImpl implements ReservationService{
 	public ResultCode modifyReservation(String username, int id, LocalDateTime startTime, LocalDateTime endTime) {
 		Reservations reservation=reservationMapper.findReservationById(id);
 		int chrgr_no=reservation.getChrgr_no();
-		//String chrstn_nm=reservation.getChrstn_nm();
 		
         synchronized(this){
         	

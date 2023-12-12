@@ -20,7 +20,7 @@
     </select>
     
 	<select id="findChargers" parameterType="String" resultType="com.school.demo.object.Chargers">
-   		SELECT * FROM Chargers WHERE addr LIKE CONCAT('%', #{searchaddr}, '%');
+   		SELECT * FROM chargers WHERE addr LIKE CONCAT('%', #{searchaddr}, '%');
 	</select>
 	
 	<select id="findTypes">
@@ -28,7 +28,7 @@
 	</select>
 	
 	<select id="getTotalCount">
-    	SELECT COUNT(*) FROM Chargers
+    	SELECT COUNT(*) FROM chargers
 	</select>
     
     <delete id="deleteCharger">

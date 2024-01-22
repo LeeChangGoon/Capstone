@@ -1,1 +1,1 @@
-*.css linguist-detectable=false
+src/main/resources/**/** linguist-vendored
